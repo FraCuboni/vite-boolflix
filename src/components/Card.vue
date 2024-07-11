@@ -6,20 +6,32 @@ export default{
     // props per popolare la card
     props : {
         MovieInfo : Object,
+    },
+
+    methods : {
+        starRating(numberToDevide){
+            return Math.ceil(numberToDevide / 2);
+        }
     }
-}
+}       
 
 </script>
 
 <template>
     <div class="box">
         <div class="imgbox">
-            <img :src="MovieInfo.poster_path" alt="">
+            <img v-if="MovieInfo && MovieInfo.poster_path" :src=" `https://image.tmdb.org/t/p/w342${MovieInfo.poster_path}`" alt="">
+            <div class="image-holder" v-else>
+                <p>?</p>
+            </div>
+            <div class="p-elements">
+                <p class="title">{{MovieInfo.title}}{{ MovieInfo.name }}</p>
+                <p v-if="MovieInfo.title !== MovieInfo.original_title">"{{MovieInfo.original_title}}{{MovieInfo.original_name}}"</p>
+                <p>LANG : {{MovieInfo.original_language}}</p>
+                <p>RATING : {{starRating(MovieInfo.vote_average)}}</p>
+            </div>
         </div>
-        <p>TITLE : {{MovieInfo.title}}{{ MovieInfo.name }}</p>
-        <p v-if="MovieInfo.title !== MovieInfo.original_title">ORIGINAL TITLE : {{MovieInfo.original_title}}{{MovieInfo.original_name}}</p>
-        <p>LANG : {{MovieInfo.original_language}}</p>
-        <p>RATING : {{MovieInfo.vote_average}}</p>
+        
     </div>
 </template>
 
@@ -29,18 +41,78 @@ export default{
 @use '../styles/partials/variables' as *;
 
 .box{
-    border: 1px solid white;
-    width: calc(100% / 5 - 10px);
+    position: relative;
+    width: calc(100% / 4);
+    padding: 10px;
+    padding-bottom: 15px;
 
     .imgbox{
         width: 100%;
-    }
-
-    p{
+        height: 100%;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
+        flex-direction: column;
+        transition: 200ms;
+
+        &:hover{
+            
+            img,
+            .image-holder{
+                filter: brightness(0.3) contrast(1) grayscale(5);
+                scale: 1.05;
+            }
+
+            .p-elements{
+                opacity: 1;
+            }
+        }
+
+        img{
+            transition: 200ms;
+        }
+
+        .image-holder{
+            width: 100%;
+            aspect-ratio: 1/1.5;
+            background-color: #303030;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 200ms;
+
+
+            p{
+                color: $tertiary_c;
+                font-size: 250px;
+            }
+
+            
+
+            
+        }
+
+        .p-elements{
+            opacity: 0;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            overflow-y: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-height: 100%;
+            transition: 300ms;
+            p{
+                color: white;
+                text-align: center;
+            }
+
+            .title{
+                font-size: 30px;
+                text-align: center;
+            }
+        }
     }
 }
 </style>

@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/roboto": "^5.0.13",
     "axios": "^1.7.2",
     "flag-icon-css": "^4.1.7",
     "vue": "^3.4.31"
