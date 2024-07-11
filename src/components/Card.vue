@@ -13,8 +13,13 @@ export default{
 
 <template>
     <div class="box">
-        <div class="imgbox"></div>
-        <p>{{MovieInfo.title}}</p>
+        <div class="imgbox">
+            <img :src="MovieInfo.poster_path" alt="">
+        </div>
+        <p>TITLE :{{MovieInfo.title}}</p>
+        <p>ORIGINAL TITLE :{{MovieInfo.original_title}}</p>
+        <p>LANG :{{MovieInfo.original_language}}</p>
+        <p>RATING :{{MovieInfo.vote_average}}</p>
     </div>
 </template>
 
@@ -28,9 +33,7 @@ export default{
     width: calc(100% / 5 - 10px);
 
     .imgbox{
-        background-color: red;
         width: 100%;
-        height: 20px;
     }
 
     p{

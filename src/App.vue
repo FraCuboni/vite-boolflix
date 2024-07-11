@@ -32,7 +32,7 @@ export default {
         store.urlTMDB = 
         endPoint += `&query=${store.searchbarInput}`
       }else{
-        store.urlTMDB = "https://api.themoviedb.org/3/discover/movie?api_key=fc18fe3dd65a7dad10aa5103671e23eb&language=it";
+        endPoint = store.urlBestMovies;
       }
 
       // richiesta andata a buon fine

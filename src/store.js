@@ -7,6 +7,8 @@ export const store = reactive({
     // url API TMDB
     urlTMDB: "https://api.themoviedb.org/3/search/movie?api_key=fc18fe3dd65a7dad10aa5103671e23eb&language=it",
 
+    urlBestMovies: "https://api.themoviedb.org/3/discover/movie?api_key=fc18fe3dd65a7dad10aa5103671e23eb&language=it",
+
     Parameters: {
 
         sarchbarSorted: '&query=',
@@ -15,6 +17,6 @@ export const store = reactive({
     },
 
     // movie searchbar
-    searchbarInput: 'back',
+    searchbarInput: '',
 
 });
