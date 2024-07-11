@@ -25,29 +25,48 @@ export default {
   methods : {
     // creo funzione per estrarre dati con axios
     GetMovie(){
-      let endPoint = store.urlTMDB;
+      let endPointMovie = store.urlBestMovies;
+      let endPointTV = store.urlTV;
+
+      let VisiblePage = [];
 
       // opzioni di ricerca (se searchbarInput NON è vuota aggiungi alla ricerca ciò che ha digitato l'utente)
       if(store.searchbarInput !== ''){
-        store.urlTMDB = 
-        endPoint += `&query=${store.searchbarInput}`
+        endPointMovie = store.urlTMDB;
+        endPointMovie += `&query=${store.searchbarInput}`;
+        endPointTV += `&query=${store.searchbarInput}`;
       }else{
-        endPoint = store.urlBestMovies;
+        endPointMovie = store.urlBestMovies;
       }
 
       // richiesta andata a buon fine
       axios.
-      get(endPoint)
+      get(endPointMovie)
       .then(res =>{
         // array di 20 
-        let result = res.data.results;
-        console.log(result);
-        store.movieList = result;
+        let resultMV = res.data.results;
+        console.log(resultMV);
+        VisiblePage.push(resultMV);
+      }),
+      axios.
+      get(endPointTV)
+      .then(res =>{
+        // array di 20 
+        let resultTV = res.data.results;
+        console.log(resultTV);
+        VisiblePage.push(resultTV);
+        store.movieList=[...VisiblePage[0],...VisiblePage[1]];
       })
+      
+
+
       // richiesta non riuscita
       .catch(err =>{
         console.log(err);
       })
+      
+
+      
     },
 
     // log della searchbar
