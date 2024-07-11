@@ -23,6 +23,10 @@ export default{
 
 <template>
     <div class="container">
+        <button><<</button>
+        <button>>></button>
+    </div>
+    <div class="container">
         <Card v-for="movie in store.movieList" :key="movie.id" :MovieInfo="movie"/>
     </div>
 </template>

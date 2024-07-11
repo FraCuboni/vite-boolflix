@@ -16,10 +16,10 @@ export default{
         <div class="imgbox">
             <img :src="MovieInfo.poster_path" alt="">
         </div>
-        <p>TITLE :{{MovieInfo.title}}</p>
-        <p>ORIGINAL TITLE :{{MovieInfo.original_title}}</p>
-        <p>LANG :{{MovieInfo.original_language}}</p>
-        <p>RATING :{{MovieInfo.vote_average}}</p>
+        <p>TITLE : {{MovieInfo.title}}{{ MovieInfo.name }}</p>
+        <p v-if="MovieInfo.title !== MovieInfo.original_title">ORIGINAL TITLE : {{MovieInfo.original_title}}{{MovieInfo.original_name}}</p>
+        <p>LANG : {{MovieInfo.original_language}}</p>
+        <p>RATING : {{MovieInfo.vote_average}}</p>
     </div>
 </template>
 
