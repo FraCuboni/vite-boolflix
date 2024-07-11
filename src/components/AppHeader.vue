@@ -1,7 +1,15 @@
 <script>
+// importo lo store
+import { store } from '../store'
 
 export default{
     name : 'AppHeader',
+
+    data(){
+        return{
+            store,
+        }
+    },
 }
 
 </script>
@@ -13,7 +21,13 @@ export default{
             <h1>BOOLFIX</h1>
         </div>
         <div class="box">
-            <input type="text" placeholder="Cerca">
+
+            <!-- INPUT -->
+            <input
+            @keyup.enter="$emit('logga')"
+            v-model="store.searchbarInput" 
+            type="text" 
+            placeholder="Cerca">
         </div>
     </div>
 

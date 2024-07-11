@@ -27,6 +27,11 @@ export default {
     GetMovie(){
       let endPoint = store.urlTMDB;
 
+      // opzioni di ricerca (se searchbarInput NON è vuota aggiungi alla ricerca ciò che ha digitato l'utente)
+      if(store.searchbarInput !== ''){
+        endPoint += `&query=${store.searchbarInput}`
+      }
+
       // richiesta andata a buon fine
       axios.
       get(endPoint)
@@ -41,6 +46,11 @@ export default {
         console.log(err);
       })
     },
+
+    // log della searchbar
+    logBar(){
+      console.log(store.searchbarInput);
+    }
   },
 
   created(){
@@ -51,7 +61,7 @@ export default {
 
 <template>
   <div>
-    <AppHeader />
+    <AppHeader @logga="GetMovie" />
     <AppMain />
   </div>
 </template>
