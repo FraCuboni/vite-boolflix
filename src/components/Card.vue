@@ -2,6 +2,11 @@
 
 export default{
     name : 'Card',
+
+    // props per popolare la card
+    props : {
+        MovieInfo : Object,
+    }
 }
 
 </script>
@@ -9,7 +14,7 @@ export default{
 <template>
     <div class="box">
         <div class="imgbox"></div>
-        <p>title</p>
+        <p>{{MovieInfo.title}}</p>
     </div>
 </template>
 

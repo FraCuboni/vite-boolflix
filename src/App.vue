@@ -21,6 +21,31 @@ export default {
       store,
     };
   },
+
+  methods : {
+    // creo funzione per estrarre dati con axios
+    GetMovie(){
+      let endPoint = store.urlTMDB;
+
+      // richiesta andata a buon fine
+      axios.
+      get(endPoint)
+      .then(res =>{
+        // array di 20 
+        let result = res.data.results;
+        console.log(result);
+        store.movieList = result;
+      })
+      // richiesta non riuscita
+      .catch(err =>{
+        console.log(err);
+      })
+    },
+  },
+
+  created(){
+    this.GetMovie()
+  },
 }
 </script>
 

@@ -1,4 +1,7 @@
 <script>
+// importo lo store
+import { store } from '../store'
+
 // importo Card
 import Card from './Card.vue';
 
@@ -7,18 +10,20 @@ export default{
 
     components : {
         Card,
-    } 
+    },
+
+    data(){
+        return{
+            store,
+        }
+    }
 }
 
 </script>
 
 <template>
     <div class="container">
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
+        <Card v-for="movie in store.movieList" :key="movie.id" :MovieInfo="movie"/>
     </div>
 </template>
 
