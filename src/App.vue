@@ -29,7 +29,10 @@ export default {
 
       // opzioni di ricerca (se searchbarInput NON è vuota aggiungi alla ricerca ciò che ha digitato l'utente)
       if(store.searchbarInput !== ''){
+        store.urlTMDB = 
         endPoint += `&query=${store.searchbarInput}`
+      }else{
+        store.urlTMDB = "https://api.themoviedb.org/3/discover/movie?api_key=fc18fe3dd65a7dad10aa5103671e23eb&language=it";
       }
 
       // richiesta andata a buon fine
