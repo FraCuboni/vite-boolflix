@@ -72,7 +72,9 @@ export default {
     // log della searchbar
     logBar(){
       console.log(store.searchbarInput);
-    }
+    },
+
+    
   },
 
   created(){

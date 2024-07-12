@@ -27,7 +27,9 @@ export default{
             <div class="p-elements">
                 <p class="title">{{MovieInfo.title}}{{ MovieInfo.name }}</p>
                 <p v-if="MovieInfo.title !== MovieInfo.original_title">"{{MovieInfo.original_title}}{{MovieInfo.original_name}}"</p>
-                <p>LANG : {{MovieInfo.original_language}}</p>
+                <div class="lang">
+                    <div :class="MovieInfo.original_language"></div>
+                </div>
                 <p>RATING : {{starRating(MovieInfo.vote_average)}}</p>
             </div>
         </div>
@@ -54,7 +56,7 @@ export default{
         transition: 200ms;
 
         &:hover{
-            
+
             img,
             .image-holder{
                 filter: brightness(0.3) contrast(1) grayscale(5);
@@ -82,7 +84,7 @@ export default{
 
             p{
                 color: $tertiary_c;
-                font-size: 250px;
+                font-size: 200px;
             }
 
             
@@ -111,6 +113,17 @@ export default{
             .title{
                 font-size: 30px;
                 text-align: center;
+            }
+            .lang{
+                aspect-ratio: 3/2;
+                width: 100px;
+
+                div{
+                    width: 100%;
+                    height: 100%;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                }
             }
         }
     }

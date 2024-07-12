@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+    user-select: none;
 }
 
 img {
@@ -12,4 +13,32 @@ img {
 .container {
     min-height: 50px;
     border: 1px dashed black;
+}
+
+
+
+// FLAGS
+
+.en {
+    background-image: url(../assets/Flag_of_United_Kingdom.svg);
+}
+
+.fr {
+    background-image: url(../assets/Flag_of_France.svg);
+}
+
+.it {
+    background-image: url(../assets/Flag_of_Italy.svg);
+}
+
+.es {
+    background-image: url(../assets/Flag_of_Spain.svg);
+}
+
+.ko {
+    background-image: url(../assets/Flag_of_South_Korea.svg);
+}
+
+.ja {
+    background-image: url(../assets/Flag_of_Japan.svg);
 }
