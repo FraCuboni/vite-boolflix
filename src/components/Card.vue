@@ -1,19 +1,32 @@
 <script>
 
-export default{
-    name : 'Card',
+export default {
+  name: 'Card',
 
-    // props per popolare la card
-    props : {
-        MovieInfo : Object,
-    },
+  // props per popolare la card
+  props: {
+    MovieInfo: Object,
+  },
 
-    methods : {
-        starRating(numberToDevide){
-            return Math.ceil(numberToDevide / 2);
+  methods: {
+    starRating(numberToDivide) {
+      let fullStars = Math.ceil(numberToDivide / 2);
+      let emptyStars = 5 - fullStars;
+      const starsF = [];
+      const starsE = [];
+
+      for (let i = 0; i <= 5; i++) { 
+        if(fullStars >= i){
+            starsF.push(i);
+        }else{
+            starsE.push(i);
         }
-    }
-}       
+      }
+
+      return [starsF.length - 1 , starsE.length];
+    },
+  },
+};      
 
 </script>
 
@@ -27,7 +40,10 @@ export default{
             <div class="p-elements">
                 <p class="title">{{MovieInfo.title}}{{ MovieInfo.name }}</p>
                 <p v-if="MovieInfo.title !== MovieInfo.original_title">"{{MovieInfo.original_title}}{{MovieInfo.original_name}}"</p>   
-                <p>RATING : {{starRating(MovieInfo.vote_average)}}</p>
+                <p>RATING :
+                    <font-awesome-icon v-for="star in starRating(MovieInfo.vote_average)[0]" :icon="['fas', 'star']" />
+                    <font-awesome-icon v-for="star in starRating(MovieInfo.vote_average)[1]" :icon="['far', 'star']" />
+                </p>
                 <p class="description">{{ MovieInfo.overview }}</p>
                 <div class="lang">
                     <div :class="MovieInfo.original_language">{{ MovieInfo.original_language }}</div>

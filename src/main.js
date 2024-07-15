@@ -2,5 +2,8 @@ import { createApp } from 'vue'
 import '@fontsource/roboto';
 import './style.css'
 import App from './App.vue'
+import FontAwesomeIcon from './plugins/font-awesome';
 
-createApp(App).mount('#app')
+const app = createApp(App);
+app.component('font-awesome-icon', FontAwesomeIcon);
+app.mount('#app');
