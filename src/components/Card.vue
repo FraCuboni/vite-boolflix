@@ -26,11 +26,12 @@ export default{
             </div>
             <div class="p-elements">
                 <p class="title">{{MovieInfo.title}}{{ MovieInfo.name }}</p>
-                <p v-if="MovieInfo.title !== MovieInfo.original_title">"{{MovieInfo.original_title}}{{MovieInfo.original_name}}"</p>
-                <div class="lang">
-                    <div :class="MovieInfo.original_language"></div>
-                </div>
+                <p v-if="MovieInfo.title !== MovieInfo.original_title">"{{MovieInfo.original_title}}{{MovieInfo.original_name}}"</p>   
                 <p>RATING : {{starRating(MovieInfo.vote_average)}}</p>
+                <p class="description">{{ MovieInfo.overview }}</p>
+                <div class="lang">
+                    <div :class="MovieInfo.original_language">{{ MovieInfo.original_language }}</div>
+                </div>
             </div>
         </div>
         
@@ -98,27 +99,31 @@ export default{
             transform: translate(-50%, -50%);
             top: 50%;
             left: 50%;
-            overflow-y: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            max-height: 100%;
+            height: 90%;
+            width: 90%;
             transition: 300ms;
             p{
                 color: white;
-                text-align: center;
             }
 
             .title{
                 font-size: 30px;
-                text-align: center;
             }
             .lang{
                 aspect-ratio: 3/2;
                 width: 100px;
+                position: absolute;
+                right: 0;
+                bottom: 10%;
+                color: white;
+                text-align: right;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
 
                 div{
+                    opacity: 0.5;
                     width: 100%;
                     height: 100%;
                     background-size: contain;
