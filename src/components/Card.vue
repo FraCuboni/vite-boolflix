@@ -40,7 +40,7 @@ export default {
             <div class="p-elements">
                 <p class="title">{{MovieInfo.title}}{{ MovieInfo.name }}</p>
                 <p v-if="MovieInfo.title !== MovieInfo.original_title">"{{MovieInfo.original_title}}{{MovieInfo.original_name}}"</p>   
-                <p>RATING :
+                <p>
                     <font-awesome-icon v-for="star in starRating(MovieInfo.vote_average)[0]" :icon="['fas', 'star']" />
                     <font-awesome-icon v-for="star in starRating(MovieInfo.vote_average)[1]" :icon="['far', 'star']" />
                 </p>
